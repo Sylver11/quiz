@@ -74,8 +74,17 @@ function checkAnswers(){
         }  
     })
     let containerResults = document.createElement("div");
-        containerResults.innerHTML = `${numCorrect} out of ${questions.length}`;
+        if(numCorrect < 10){
+            containerResults.innerHTML = `You got ${numCorrect} out of ${questions.length} right. Try harder!`;
         container.appendChild(containerResults)
+
+        } else if (numCorrect >= 10 && numCorrect <= 15){
+        containerResults.innerHTML = `You got ${numCorrect} out of ${questions.length} right. Not too bad but there is still room to improve!`;
+        container.appendChild(containerResults)
+        } else if(numCorrect > 15){
+        containerResults.innerHTML = `You got ${numCorrect} out of ${questions.length} right. Well done you are a specialist`;
+        container.appendChild(containerResults)
+        }
 }
 
 
