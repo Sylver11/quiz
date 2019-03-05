@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The best quiz ever!</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>The ultimate WW2 quiz you have to take!</h1>
+<div id="quiz"></div>
+<button value="Press to check your answers" onclick="checkAnswers()" id="submit">Click to check Answers</button>
+<script>
+let questions =[ 
+["How long was the Second World War?","3 Years","4 Years","5 Years","6 Years"],["What year during the Nazi-Regime did Germany host the Olympics?","1933","1936","1929","1950"],["When did the WW2 start?","1914","1945","1939","1960"],["Which country was first to enter Berlin in combat?","France","United States","Russia","England"],["Approximately, how many Jews lost their lives in concentration camps during the Nazi-regime","50000","800000","1000000","6000000"],["Who of the following persons was the chief of propanda and the right hand of Adolf Hitler?","Joseph Goebbels","Hermann Goering","Friedrich Himmler","Erwin Rommel"],["Of all countries particpating in the WW2 which of the following countries experienced the heighest amount of causulties in absolute numbers?","Germany","Italy","Russia","United States"],["After the siege of Germany Berlin was divided into sectors each assigned to one ally. How many sectors were there?","2","3","4","6"],["Which country was first attacked by German forces in the beginning of WW2?","Netherlands","France","England","Poland"],["Who was the leader of Japan during WW2?","Mao Zedong","Emperor Meiji","Emperor Hirohito","Shinzo Abe"],["How did Adolf Hitler die?","Commit sucide","Killed in combat","Heart attack","Natural death"],["What day was D-day?","8 August 1944","6 June 1944","6 August 1944","8 Mai 1943"],["Which area in France was first sieged by the United States forces?","La Cote D'Azur", "Normandy","Languedoc","Riviera"]];
+const solutions = ["6 Years", "1936","1939","Russia","6000000","Joseph Goebbels","Russia","6","Poland","Emperor Hirohito","Commit sucide","6 June 1944","Normandy"]
+let numCorrect = 0;
+const output = [];
+let container = document.getElementById("quiz");
+      
+myFunction();
+function myFunction(){
+questions.forEach((currentQuestion, questionNumber) => {
+
+    output.push(
+
+        `<form id="question-${questionNumber}-form">
+        <div id="question-${questionNumber}" class="question"> ${currentQuestion[0]}<br><br>
+         ${currentQuestion[1]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[1]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[2]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[2]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[3]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[3]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[4]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[4]}"><br><br><br>
+       
+        
+        </div>
+        </form>`
+      );   
+})
+
+let containerChild = document.createElement("div");
+containerChild.innerHTML = output;
+container.appendChild(containerChild);}
+
+function checkAnswers(){
+    numCorrect = 0;
+    const questionNameArray = [
+    'question-0-form',
+        'question-1-form',
+        'question-2-form',
+        'question-3-form',
+        'question-4-form',
+        'question-5-form',
+        'question-6-form',
+        'question-7-form',
+        'question-8-form',
+        'question-9-form',
+        'question-10-form',
+        'question-11-form',
+        'question-12-form',
+       
+        
+    ];
+    questionNameArray.forEach((item, index) => {
+        questionForm = document.getElementById(item);
+
+        const userAnswer = questionForm.elements[item].value;
+        if (userAnswer == solutions[index]){
+            numCorrect++;
+        }  
+    })
+    let containerResults = document.createElement("div");
+        containerResults.innerHTML = `${numCorrect} out of ${questions.length}`;
+        container.appendChild(containerResults)
+}
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+
+body{
+margin:5%;
+background-color: aliceblue;
+}
+h1{
+   margin-bottom: 50px; 
+}
+p{
+    font-size: 30px;
+}
+.question{
+    /* margin-left:5%; */
+}
