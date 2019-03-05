@@ -13,8 +13,8 @@
 <button value="Press to check your answers" onclick="checkAnswers()" id="submit">Click to check Answers</button>
 <script>
 let questions =[ 
-["How long was the Second World War?","3 Years","4 Years","5 Years","6 Years"],["What year during the Nazi-Regime did Germany host the Olympics?","1933","1936","1929","1950"],["When did the WW2 start?","1914","1945","1939","1960"],["Which country was first to enter Berlin in combat?","France","United States","Russia","England"],["Approximately, how many Jews lost their lives in concentration camps during the Nazi-regime","50000","800000","1000000","6000000"],["Who of the following persons was the chief of propanda and the right hand of Adolf Hitler?","Joseph Goebbels","Hermann Goering","Friedrich Himmler","Erwin Rommel"],["Of all countries particpating in the WW2 which of the following countries experienced the heighest amount of causulties in absolute numbers?","Germany","Italy","Russia","United States"],["After the siege of Germany Berlin was divided into sectors each assigned to one ally. How many sectors were there?","2","3","4","6"],["Which country was first attacked by German forces in the beginning of WW2?","Netherlands","France","England","Poland"],["Who was the leader of Japan during WW2?","Mao Zedong","Emperor Meiji","Emperor Hirohito","Shinzo Abe"],["How did Adolf Hitler die?","Commit sucide","Killed in combat","Heart attack","Natural death"],["What day was D-day?","8 August 1944","6 June 1944","6 August 1944","8 Mai 1943"],["Which area in France was first sieged by the United States forces?","La Cote D'Azur", "Normandy","Languedoc","Riviera"]];
-const solutions = ["6 Years", "1936","1939","Russia","6000000","Joseph Goebbels","Russia","6","Poland","Emperor Hirohito","Commit sucide","6 June 1944","Normandy"]
+["How long was the Second World War?","3 Years","4 Years","5 Years","6 Years"],["What year during the Nazi-Regime did Germany host the Olympics?","1933","1936","1929","1950"],["When did the WW2 start?","1914","1945","1939","1960"],["Which country was first to enter Berlin in combat?","France","United States","Russia","England"],["Approximately, how many Jews lost their lives in concentration camps during the Nazi-regime","50000","800000","1000000","6000000"],["Who of the following persons was the chief of propanda and the right hand of Adolf Hitler?","Joseph Goebbels","Hermann Goering","Friedrich Himmler","Erwin Rommel"],["Of all countries particpating in the WW2 which of the following countries experienced the heighest amount of causulties in absolute numbers?","Germany","Italy","Russia","United States"],["After the siege of Germany Berlin was divided into sectors each assigned to one ally. How many sectors were there?","2","3","4","6"],["Which country was first attacked by German forces in the beginning of WW2?","Netherlands","France","England","Poland"],["Who was the leader of Japan during WW2?","Mao Zedong","Emperor Meiji","Emperor Hirohito","Shinzo Abe"],["How did Adolf Hitler die?","Commit sucide","Killed in combat","Heart attack","Natural death"],["What day was D-day?","8 August 1944","6 June 1944","6 August 1944","8 Mai 1943"],["Which area in France was first sieged by the United States forces?","La Cote D'Azur", "Normandy","Languedoc","Riviera"],["Which country helped Germany invade Poland?","Romania","Soviet Union","Ukraine","Netherlands"],["Who was the president at the start of WWII?","Harry Truman","Dwight Eisenhower","Barack Obama","Franklin Roosevelt"],["Which event led the U.S. to enter WWII?","Sinking of the Lusitania","Attack on Pearl Habour","Bombing of London","German concentration camps"],["Who was the leader of the Soviet Union during WW2?","Joseph Stalin","Karl Marx","Vladimir Lenin", "Vladimir Putin"],["Which of the following countries remained neutral during the war?","Netherlands","Spain","France","Italy"],["What did the United States do to some Japanese-American citizens during the war?","Exil them to Hawaii","Sent them to internment camps","Forced them to register as terrists","Killed them"],["What were Japanese suicide bombers called?","Kaiten","Bushido","Kamikaze","Nain"]];
+const solutions = ["6 Years", "1936","1939","Russia","6000000","Joseph Goebbels","Russia","6","Poland","Emperor Hirohito","Commit sucide","6 June 1944","Normandy","Soviet Union","Franklin Roosevelt","Attack on Pearl Habour","Joseph Stalin","Spain","Sent them to internment camps","Kamikaze"]
 let numCorrect = 0;
 const output = [];
 let container = document.getElementById("quiz");
@@ -55,6 +55,13 @@ function checkAnswers(){
         'question-10-form',
         'question-11-form',
         'question-12-form',
+        'question-13-form',
+        'question-14-form',
+        'question-15-form',
+        'question-16-form',
+        'question-17-form',
+        'question-18-form',
+        'question-19-form'
        
         
     ];
