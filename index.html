@@ -21,13 +21,13 @@ let container = document.getElementById("quiz");
       
 myFunction();
 function myFunction(){
-questions.forEach((currentQuestion, questionNumber) => {
+questions.forEach((currentQuestion, index) => {
 
     output.push(
 
-        `<form id="question-${questionNumber}-form">
-        <div id="question-${questionNumber}" class="question"> ${currentQuestion[0]}<br><br>
-         ${currentQuestion[1]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[1]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[2]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[2]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[3]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[3]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[4]} <input type="radio" id="radio_input" class="answers" name="question-${questionNumber}-form" value="${currentQuestion[4]}"><br><br><br>
+        `<form id="question-${index}-form">
+        <div id="question-${index}" class="question"> ${currentQuestion[0]}<br><br>
+         ${currentQuestion[1]} <input type="radio" id="radio_input" class="answers" name="question-${index}-form" value="${currentQuestion[1]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[2]} <input type="radio" id="radio_input" class="answers" name="question-${index}-form" value="${currentQuestion[2]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[3]} <input type="radio" id="radio_input" class="answers" name="question-${index}-form" value="${currentQuestion[3]}">&nbsp;&nbsp;&nbsp; ${currentQuestion[4]} <input type="radio" id="radio_input" class="answers" name="question-${index}-form" value="${currentQuestion[4]}"><br><br><br>
        
         
         </div>
@@ -41,30 +41,38 @@ container.appendChild(containerChild);}
 
 function checkAnswers(){
     numCorrect = 0;
-    const questionNameArray = [
-    'question-0-form',
-        'question-1-form',
-        'question-2-form',
-        'question-3-form',
-        'question-4-form',
-        'question-5-form',
-        'question-6-form',
-        'question-7-form',
-        'question-8-form',
-        'question-9-form',
-        'question-10-form',
-        'question-11-form',
-        'question-12-form',
-        'question-13-form',
-        'question-14-form',
-        'question-15-form',
-        'question-16-form',
-        'question-17-form',
-        'question-18-form',
-        'question-19-form'
+    let questionNameArray = Array.from(new Array(questions.length), function(item, index) {
+        return `question-${index}-form`});
+    // questionNameArray = questionNameArray.map(function(item, index) {
+    //     return `question-${index}-form`;
+        
+    // });
+console.log(questionNameArray);
+
+    // const questionNameArray = [
+    // 'question-0-form',
+    //     'question-1-form',
+    //     'question-2-form',
+    //     'question-3-form',
+    //     'question-4-form',
+    //     'question-5-form',
+    //     'question-6-form',
+    //     'question-7-form',
+    //     'question-8-form',
+    //     'question-9-form',
+    //     'question-10-form',
+    //     'question-11-form',
+    //     'question-12-form',
+    //     'question-13-form',
+    //     'question-14-form',
+    //     'question-15-form',
+    //     'question-16-form',
+    //     'question-17-form',
+    //     'question-18-form',
+    //     'question-19-form'
        
         
-    ];
+    // ];
     questionNameArray.forEach((item, index) => {
         questionForm = document.getElementById(item);
 
