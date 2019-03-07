@@ -8,21 +8,55 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+
+
+
+
+
+
+
+<!-- Creating some html elements which I can refer to in the js section below -->
     <h1>The ultimate WW2 quiz you have to take!</h1>
 <div id="quiz"></div>
 <button value="Press to check your answers" onclick="checkAnswers()" id="submit">Click to check Answers</button>
+
+
+
+
+
+
+
+
 <script>
+
+
+    //these are the questions which I have put into an array which again are in an array. You could also have objects in that array which would be a cleaner version but its just easier to access them I feel. 
 let questions =[ 
 ["How long was the Second World War?","3 Years","4 Years","5 Years","6 Years"],["What year during the Nazi-Regime did Germany host the Olympics?","1933","1936","1929","1950"],["When did the WW2 start?","1914","1945","1939","1960"],["Which country was first to enter Berlin in combat?","France","United States","Russia","England"],["Approximately, how many Jews lost their lives in concentration camps during the Nazi-regime","50000","800000","1000000","6000000"],["Who of the following persons was the chief of propanda and the right hand of Adolf Hitler?","Joseph Goebbels","Hermann Goering","Friedrich Himmler","Erwin Rommel"],["Of all countries particpating in the WW2 which of the following countries experienced the heighest amount of causulties in absolute numbers?","Germany","Italy","Russia","United States"],["After the siege of Germany Berlin was divided into sectors each assigned to one ally. How many sectors were there?","2","3","4","6"],["Which country was first attacked by German forces in the beginning of WW2?","Netherlands","France","England","Poland"],["Who was the leader of Japan during WW2?","Mao Zedong","Emperor Meiji","Emperor Hirohito","Shinzo Abe"],["How did Adolf Hitler die?","Commit sucide","Killed in combat","Heart attack","Natural death"],["What day was D-day?","8 August 1944","6 June 1944","6 August 1944","8 Mai 1943"],["Which area in France was first sieged by the United States forces?","La Cote D'Azur", "Normandy","Languedoc","Riviera"],["Which country helped Germany invade Poland?","Romania","Soviet Union","Ukraine","Netherlands"],["Who was the president at the start of WWII?","Harry Truman","Dwight Eisenhower","Barack Obama","Franklin Roosevelt"],["Which event led the U.S. to enter WWII?","Sinking of the Lusitania","Attack on Pearl Habour","Bombing of London","German concentration camps"],["Who was the leader of the Soviet Union during WW2?","Joseph Stalin","Karl Marx","Vladimir Lenin", "Vladimir Putin"],["Which of the following countries remained neutral during the war?","Netherlands","Spain","France","Italy"],["What did the United States do to some Japanese-American citizens during the war?","Exil them to Hawaii","Sent them to internment camps","Forced them to register as terrists","Killed them"],["What were Japanese suicide bombers called?","Kaiten","Bushido","Kamikaze","Nain"]];
 const solutions = ["6 Years", "1936","1939","Russia","6000000","Joseph Goebbels","Russia","6","Poland","Emperor Hirohito","Commit sucide","6 June 1944","Normandy","Soviet Union","Franklin Roosevelt","Attack on Pearl Habour","Joseph Stalin","Spain","Sent them to internment camps","Kamikaze"]
+
+
+//here we are just creating some global variables that can be accessed from any point in the code. like the empty output array which I will explain just now. 
 let numCorrect = 0;
 const output = [];
+
+//and here we have a container which refers to the quiz div in the HTML section above. 
 let container = document.getElementById("quiz");
       
+
+
+
+//calling the function myFunction to initiate the entire process
 myFunction();
+
+
+//this is our main function at which we are running a loop called forEach. This loop just works like a normal "for" loop but you can modify it a bit more. But it is not necessary to have it. 
 function myFunction(){
 questions.forEach((currentQuestion, index) => {
 
+
+// now here everything comes together. Into the empty array which we have defined above we are now pushing in a form. This form is a mixture of html and js. The moment you create ``` these things you tell js that you are about to insert html into the code. As you can see I am givig the form a id named question-${index}-form. the reason why I am using the $ sign in front of the index is because I am referring to a js element inside the html. so this is js in html in js haha. 
+//Anyways, the index in speficied above in the questions.forEach loop and it will draw its information from there. That means because all of this is part of the forEach loop it will replicate each form for each question in the array questions just with a differnt index number. Just the same way we are pulling the answers from the same array. When looking at the forEach loop you will see that it says currentQuestion, index which means that it will pull each element which happen to also be arrays. Remember we are dealing with arrays in an array. You can see that it says currentQuestion[0] this says as much as pull the first element of the currentQuestion. currentQuestion[1] thus is the second element in the currentQuestion array. the index just refers to its index number. 
     output.push(
 
         `<form id="question-${index}-form">
@@ -35,19 +69,30 @@ questions.forEach((currentQuestion, index) => {
       );   
 })
 
+//here we are writing array output which hold all the questions, answers and checkboxes into the DOM by using the appendChild method. You can read up about this. it doesnt require logic 
 let containerChild = document.createElement("div");
 containerChild.innerHTML = output;
 container.appendChild(containerChild);}
 
+
+
+// This function will be called the moment the user clicks on the button (oncklick)
 function checkAnswers(){
+    
+    //just specifiying that the counting of correct answers should start at 0
     numCorrect = 0;
+
+
+    //now we create an variable that is equal to Array.from. An array.from is a very specific kind of array we need in this case because we are dealing with HTML objects in the array. When you look below you will find an old questionName Array that listed elements which worked as reference to the forms which where created above. Now these elements are in HTML form and if we run a loop which we do at line 125 then we need a special form of array. 
+    //just after array.from we have new array which creates this new special array and defines the lenght according to the questions.length from the top that is from the big array from the top named questions. In that case the new and special array will have 20 new open spots for things to be put in. 
+    //the function after that fills the array up with all the references to the unser answers. You can see that when looking at the return. Thus when the function runs it returns the item (which is the question-${index}-form) and the corresponding index number
     let questionNameArray = Array.from(new Array(questions.length), function(item, index) {
         return `question-${index}-form`});
-    // questionNameArray = questionNameArray.map(function(item, index) {
-    //     return `question-${index}-form`;
-        
-    // });
-console.log(questionNameArray);
+ 
+
+
+
+ //as specified above this is the old part of the code. Here you need to put in the references to the user answers all manually which was obvioulsy too much work and ineffcient. This part is now done by the above code. 
 
     // const questionNameArray = [
     // 'question-0-form',
@@ -73,19 +118,39 @@ console.log(questionNameArray);
        
         
     // ];
+
+
+
+    //At this part we are looping through the array of HTML elements. Because these elements are of HTML nature to loop through it you need to get Element by id just like you would call an element from a html part. We define this loop as questionForm
     questionNameArray.forEach((item, index) => {
         questionForm = document.getElementById(item);
 
+
+    //At this stage we take the newly created questionsForm variable which has all the looping through elements inside it and compare it with are actual solutions. Remember: The HTML array which is now being looped through is a mere reference to the actual answers from the user so in some sense the variable questionForm just gives us the environment in which we can loop these references through to be able to compare them with the actual solutions. To do that you create another variable in this case called userAnswer which is equal to the questionForm elements (here again because we want to loop through each element we need to tell the compiler that each elemment needs to be fetched and the [item] is just to make double sure that we get all of the elements. One might even take that part out but I havent tired that yet. So we are now setting reference value equal to that userAnswer variable and start a if statement. )
         const userAnswer = questionForm.elements[item].value;
         if (userAnswer == solutions[index]){
             numCorrect++;
-        }  
-    })
+        }})
+    //this is were things get easier again. essentially the above just says that if the userAnswer is equal to the solutions index (you will find this array on the top just below the big array with all the questions inside) then add a 1 to the list (whatever that list is but somehow this numCorrect thing just has its own array where it stores the score so you do not need to take care of that). 
+    
+
+
+
+//here we create a container named containerResults that will push the results into the document
     let containerResults = document.createElement("div");
+
+
+
+    //so if the amount of correcct answers is now below 10
         if(numCorrect < 10){
+
+
+            //then it will appendChild to the containerResults. This part does not require much logic its just learning off by heart of it works then you fine
             containerResults.innerHTML = `You got ${numCorrect} out of ${questions.length} right. Try harder!`;
         container.appendChild(containerResults)
 
+
+        //same goes for the else if statement 
         } else if (numCorrect >= 10 && numCorrect <= 15){
         containerResults.innerHTML = `You got ${numCorrect} out of ${questions.length} right. Not too bad but there is still room to improve!`;
         container.appendChild(containerResults)
